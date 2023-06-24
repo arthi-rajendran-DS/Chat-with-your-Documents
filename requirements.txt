@@ -1,4 +1,10 @@
+huggingface_hub
+sentence_transformers
 faiss-cpu
-flask_sqlalchemy
-farm-haystack
-streamlit == 1.22.0
+unstructured
+unstructured[local-inference]
+chromadb
+Cython
+tiktoken
+langchain
+streamlit
