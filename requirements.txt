@@ -7,4 +7,5 @@ chromadb
 Cython
 tiktoken
 langchain
+BeautifulSoup4
 streamlit
