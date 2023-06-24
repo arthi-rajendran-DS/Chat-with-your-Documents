@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import io
 from langchain.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -17,17 +18,19 @@ def main():
     # Add file upload functionality
     uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
 
+    st.write("How to get your API? https://youtu.be/jo_fTD2H4xA")
+
     # Add input for Hugging Face API key
     api_key = st.text_input("Enter your Hugging Face API key")
 
-    st.write("How to get your API? https://youtu.be/jo_fTD2H4xA")
+    
 
     if uploaded_file is not None and api_key:
         # Set the Hugging Face API key
         os.environ["HUGGINGFACEHUB_API_TOKEN"] = api_key
 
         # Load the PDF document
-        pdf_loader = UnstructuredPDFLoader(uploaded_file)
+        pdf_loader = pdf_loader = UnstructuredPDFLoader(io.BytesIO(uploaded_file.read()))
         index = VectorstoreIndexCreator(
             embedding=HuggingFaceEmbeddings(),
             text_splitter=CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
