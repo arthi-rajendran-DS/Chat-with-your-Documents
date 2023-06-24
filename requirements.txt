@@ -1,3 +1,4 @@
 faiss-cpu
+flask_sqlalchemy
 farm-haystack
 streamlit == 1.22.0
